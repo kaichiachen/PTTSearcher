@@ -1,5 +1,6 @@
 # PttCrawler  
-ptt的爬蟲程式，利用[scrapy](http://doc.scrapy.org/en/latest/intro/install.html)套件，根據指定的看板及時間，抓取標題、時間、作者、內文、評論
+ptt的爬蟲程式，利用[scrapy](http://doc.scrapy.org/en/latest/intro/install.html)套件，根據指定的看板及時間，抓取標題、時間、作者、內文、評論  
+
 ### 環境設定
 + python2.7 或 3.3以上
 + 安裝Scrapy  
@@ -24,6 +25,9 @@ ptt的爬蟲程式，利用[scrapy](http://doc.scrapy.org/en/latest/intro/instal
 + -k : 陣列，搜索的關鍵字
 + -h : help
 
+<img src="http://i.imgur.com/1mZg2rV.png" alt="Drawing" width = "600" height = "400" />
+
+另外，在mac的環境下，只要按住Command並點兩下網址就會自動開啟超連結囉！
 ## 客製化
 在專案目錄下的
 
