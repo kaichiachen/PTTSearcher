@@ -32,7 +32,7 @@ def main():
     parser.add_argument('-k', '--keyword', type=commandline_arg, nargs='*',
         help='search article according to keywords')
     args = parser.parse_args()
-    path = './' + args.board + '.json'
+    path = args.board
     keyword = [k for k in args.keyword]
     words = defaultdict(int)
     titles = []
