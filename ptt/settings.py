@@ -31,14 +31,20 @@ DOWNLOAD_DELAY = 1.5
 LOG_LEVEL = 'DEBUG'
 
 # PTT board name
-BOARD = 'AllTogether'
+BOARD = 'graduate'
 
 # Stop crawling date 
 STOP_DATE = {
 	'year': 2016,
-	'month': 07,
-	'day': 10
+	'month': 3,
+	'day': 1
 }
+
+#Telegram bot
+#TELE_BOT_TOKEN = 'your telegram bot token'
+#SEND_ID = channel id
+
+
 # The download delay setting will honor only one of:
 #CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16

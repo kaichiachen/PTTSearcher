@@ -6,6 +6,8 @@ import scrapy
 from scrapy.http import FormRequest
 from ptt.items import PttItem
 from scrapy.conf import settings
+import telepot
+
 
 class ColorfulLog:
 	HEADER = '\033[95m'
@@ -57,6 +59,9 @@ class PTTSpider(scrapy.Spider):
 		# show cralwer log or not
 		logging.getLogger('scrapy').propagate = PTTSpider.DEBUG
 
+		if settings.get('TELE_BOT_TOKEN') is not None:
+			self.bot = telepot.Bot(settings.get('TELE_BOT_TOKEN'))
+
 		ColorfulLog.info('crawl the data until %d-%d-%d' % (self.year, self.month, self.day,))
 
 	def parse(self, response):
@@ -92,10 +97,17 @@ class PTTSpider(scrapy.Spider):
 			    else:
 			        ColorfulLog.warning('Page is end')
 			else:
-			    ColorfulLog.debug('Finish crawling!')
+				try:
+					self.bot.sendMessage(settings.get('SEND_ID'), 'PTT: ' + settings.get('BOARD') +'爬完資料了')
+				except:
+					pass
+				ColorfulLog.debug('Finish crawling!')
 
 	def parse_post(self, response):
 		item = PttItem()
+		if len(response.xpath('//meta[@property="og:title"]/@content')) == 0:
+			return
+
 		item['title'] = response.xpath(
 		    '//meta[@property="og:title"]/@content')[0].extract()
 		item['author'] = response.xpath(
@@ -127,8 +139,7 @@ class PTTSpider(scrapy.Spider):
 		    push_content = comment.css('span.push-content::text')[0].extract()
 
 		    comments.append({'user': push_user,
-		                     'content': push_content,
-		                     'score': score})
+		                     'content': push_content})
 
 		item['comments'] = comments
 		item['url'] = response.url
