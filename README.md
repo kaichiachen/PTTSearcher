@@ -14,7 +14,7 @@ ptt的爬蟲程式，利用[scrapy](http://doc.scrapy.org/en/latest/intro/instal
 ## 抓取資料
 根據看板及時間抓取資料後並匯出到json檔
 
-	scrapy crawl ptt -o alltogether.json
+	scrapy crawl ptt -o graduate.json
 當然，你也可以客製化匯出到自己的sql等等，另外，設定看板及時間的部分在底下客製化的部分會提到
 ## 搜索
 爬到內容後，看個人興趣想做什麼應用，像我就做了一個簡單的全文檢索
