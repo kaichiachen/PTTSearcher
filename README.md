@@ -1,4 +1,4 @@
-# PttCrawler  
+# PttSearcher  
 ptt的爬蟲程式，利用[scrapy](http://doc.scrapy.org/en/latest/intro/install.html)套件，根據指定的看板及時間，抓取標題、時間、作者、內文、評論  
 
 ### 環境設定
